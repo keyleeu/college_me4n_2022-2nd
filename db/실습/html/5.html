@@ -1,0 +1,23 @@
+<!-- 일단 get으로 호출한뒤, 나중에 제출할때 post로 바꾸어주는게 좋다 -->
+
+<form action="user_info.jsp" method="POST">
+    Name: <input type="text" name="name">
+    <input type ="radio" name="gender" value="male">Male
+    <input type ="radio" name="gender" value="female">Female
+    <br><br>Choose your region
+    <select name="region">
+    <option>Seoul</option> <option>Busan</option>
+    <option>Daegu</option> <option>Gwangju</option>
+    <option>Incheon</option> <option>Daejeon</option>
+    <option>Ulsan</option> <option>Gyeonggi</option>
+    </select><br><br>
+    Your hobbies:
+    <input type="checkbox" name="hobby" value="fball">Football
+    <input type="checkbox" name="hobby" value="read">reading
+    <input type="checkbox" name="hobby" value="music">Music
+    <input type="checkbox" name="hobby" value="java">Java<br>
+    <textarea name="info" cols=50 rows=8>More Info</textarea><br>
+    Your Password <input type="password" name="pwd"><br><br>
+    <input type="submit" value="Send""> <input type="reset" value="Reset">
+    <input type="hidden" name="id" value="497">
+</form>
