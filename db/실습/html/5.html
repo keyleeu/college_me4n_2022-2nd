@@ -1,23 +1,34 @@
 <!-- 일단 get으로 호출한뒤, 나중에 제출할때 post로 바꾸어주는게 좋다 -->
 
 <form action="user_info.jsp" method="POST">
-    Name: <input type="text" name="name">
+    이름 <input type="text" name="name">
+    </br></br>
+    성별을 선택하세요.
     <input type ="radio" name="gender" value="male">Male
     <input type ="radio" name="gender" value="female">Female
-    <br><br>Choose your region
+    <br><br> 목적지를 선택하세요.
     <select name="region">
-    <option>Seoul</option> <option>Busan</option>
-    <option>Daegu</option> <option>Gwangju</option>
-    <option>Incheon</option> <option>Daejeon</option>
-    <option>Ulsan</option> <option>Gyeonggi</option>
+        <option>청량리역</option> <option>남원주역</option>
+        <option>서경주역</option> 
+    </select>
+    <br><br>도착지를 선택하세요.
+    <select name="region">
+        <option>청량리역</option> <option>남원주역</option>
+        <option>서경주역</option> 
     </select><br><br>
-    Your hobbies:
-    <input type="checkbox" name="hobby" value="fball">Football
-    <input type="checkbox" name="hobby" value="read">reading
-    <input type="checkbox" name="hobby" value="music">Music
-    <input type="checkbox" name="hobby" value="java">Java<br>
+    Your trains:
+    <select name="number">
+        <option>1</option> <option>2</option>
+        <option>3</option> <option>4</option>
+        <option>5</option> <option>6</option>
+        <option>7</option> <option>8</option>
+        <option>9</option> <option>10</option>
+    </select>
+    </br>
+    </br>
     <textarea name="info" cols=50 rows=8>More Info</textarea><br>
-    Your Password <input type="password" name="pwd"><br><br>
+    </br>
+    Your ticket number <input type="password" name="pwd"><br><br>
     <input type="submit" value="Send""> <input type="reset" value="Reset">
     <input type="hidden" name="id" value="497">
 </form>

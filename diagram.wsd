@@ -1,0 +1,100 @@
+@startuml
+actor user
+queue kakao
+participant system
+database database
+actor user_sub
+
+
+group login
+    user -> kakao : 사용자의 카카오계정 정보 전달
+    activate system
+    alt login
+        kakao -> system : 카카오에서 계정정보가 있다면 로그인
+    else
+        kakao -> system : 카카오에서 계정정보가 없다면 사인업
+    end
+        system -> database : 사용자 정보 db 저장
+        activate database
+            database -> system : 저장후 시스템 실행
+        deactivate database
+        system -> user : 메인페이지로 이동
+    deactivate system
+end
+
+group category
+    user -> system : 카테고리 선택
+    activate system
+        system -> database : 선택된 카테고리 탐색
+        activate database
+            database -> system : 선택된 카테고리 전달
+        deactivate database
+        system -> user : 카테고리 적용한 메인페이지로 이동
+    deactivate system
+end
+
+group deal
+    user -> system : 수락 선택
+    activate system
+    user_sub -> system : 수락 선택
+        alt 진행 여부
+            system -> system : 둘다 진행시 거래페이지로 이동
+            system --> user : 
+            alt 거래중
+                user -> system : 둘다 완료 선택
+                system -> database : 거래관련 정보 db 전달
+                activate database
+                    database --> system : 
+                deactivate database
+                system -> user : 평점페이지로 이동
+                user -> system : 평점 입력
+                system -> database : 평점 db 전달
+                activate database
+                    database --> system : 
+                deactivate database
+                system --> user :
+                user -> user : 메인페이지로 이동
+            else
+                user -> user : 한명이라도 거래 취소시 메인페이지로 이동
+            end
+            activate database        
+        else
+            system -> user : 한명이라도 거절하면 메인페이지 이동
+            deactivate system
+        end      
+end
+
+group modify (category 와 동일)
+    user -> system :
+    activate system
+        system -> database :
+        activate database
+            database ->system :
+        deactivate database
+        system -> user :
+    deactivate system    
+end
+
+group rate (category 와 동일)
+    user -> system :
+    activate system
+        system -> database :
+        activate database
+            database -> system :
+        deactivate database
+        system -> user :
+    deactivate system
+end
+
+group report (category 와 동일)
+    user -> system :
+    activate system
+        system -> database :
+        activate database
+            database -> system :
+        deactivate database
+        system -> user :
+    deactivate system
+end
+
+@enduml
